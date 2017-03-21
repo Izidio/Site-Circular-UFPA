@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+ <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Rota Circular - Versão Teste</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+      }
+#floating-panel {
+  position: absolute;
+  top: 50px;
+  left: 0%;
+  z-index: 5;
+  background-color: #fff;
+  padding: 5px;
+  border: 1px solid #999;
+  text-align: center;
+  font-family: 'Roboto','sans-serif';
+  line-height: 30px;
+  padding-left: 10px;
+}
+    </style>
+	<script type="text/javascript" src="js/browserMqtt.js"></script>
+</head>
+ <body>
+	<div id="floating-panel">
+		 <input onclick="clearMarkers();" type=button value="Esconder Parada">
+		 <input onclick="showMarkers();" type=button value="Mostrar Parada">
+		 </div>
+	<div id="map"></div>
+	<script type="text/javascript" src="js/map.js"></script>
+	<script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3PYkutQnw0_SdtKKYhUTb1jmviqWQ_Vo&callback=initMap"
+		async defer></script>
+	<div id="map-canvas"/>
+	<script type="text/javascript" src="js/clientMqtt.js"></script>
+ </body>
+</html>
