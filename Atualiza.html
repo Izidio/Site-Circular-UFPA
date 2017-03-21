@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>atulizando</title>
+    <script type="text/javascript" src="js/browserMqtt.js"></script>  
+</head>
+<body>
+    <h1>Atualizando</h1>
+	   <script>
+	   
+	   var client1 = mqtt.connect('ws://test.mosca.io:80')
+        client1.on('connect', function(){
+            console.log('maybe connected')
+            client1.subscribe('Lat');
+            client1.on('message', function(topic, payload) {
+                console.log(payload)
+                console.log(payload.toString())
+				});
+            client1.publish('Lat','-1.473297');
+        });
+		var client2 = mqtt.connect('ws://test.mosca.io:80')
+		client2.on('connect', function(){
+            console.log('maybe connected')
+            client2.subscribe('Lng');
+            client2.on('message', function(topic, payload) {
+                console.log(payload)
+                console.log(payload.toString())
+				});
+            client2.publish('Lng','-48.453620');
+        });
+	   
+	 
+    </script>
+</body>
+</html>  
