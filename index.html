@@ -1,44 +1,64 @@
 <!DOCTYPE html>
-<html>
- <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+
+<html lang="pt-br">
+<head>
     <meta charset="utf-8">
-    <title>Rota Circular - Versão Teste</title>
-    <style>
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      #map {
-        height: 100%;
-      }
-#floating-panel {
-  position: absolute;
-  top: 50px;
-  left: 0%;
-  z-index: 5;
-  background-color: #fff;
-  padding: 5px;
-  border: 1px solid #999;
-  text-align: center;
-  font-family: 'Roboto','sans-serif';
-  line-height: 30px;
-  padding-left: 10px;
-}
-    </style>
-	<script type="text/javascript" src="js/browserMqtt.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rota Circular - UFPA</title>
+ 
+	<link rel="stylesheet" href="css/menu.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/menuRetratil.css">
+    <script type="text/javascript" src="js/mqtt/browserMqtt.js"></script>
+
 </head>
- <body>
-	<div id="floating-panel">
-		 <input onclick="clearMarkers();" type=button value="Esconder Parada">
-		 <input onclick="showMarkers();" type=button value="Mostrar Parada">
-		 </div>
-	<div id="map"></div>
-	<script type="text/javascript" src="js/map.js"></script>
-	<script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3PYkutQnw0_SdtKKYhUTb1jmviqWQ_Vo&callback=initMap"
-		async defer></script>
-	<div id="map-canvas"/>
-	<script type="text/javascript" src="js/clientMqtt.js"></script>
- </body>
+
+<body>
+	<section id="circle1"></section> 
+	<section id="circle2"></section>
+	
+	<img id="img" src="images/stops/stoppoint.png" height="35" width="35" onclick="atualizaMarkes()"/>
+	<img id="imgMap2" src="images/bus/mapIcon.png" height="35" width="35" onclick="changeMap()"/>
+	
+	<img id="logo" class="classLogo" src="images/bus/mapIcon.png"/>
+	
+	
+	<div id="mode-selector" class="controls">
+		<input type="radio" value="WALKING" name="type" id="changemode-walking" onclick="routeWalking()">
+		<label>Andando</label>
+		<input type="radio" value="TRANSIT" name="type" id="changemode-transit" checked onclick="routeBus()">
+		<label>Circular</label>
+		<input type="radio" value="DRIVING" name="type" id="changemode-driving" onclick="routeDriving()">
+		<label>Dirigindo</label>
+    </div>
+  
+  
+	
+	
+<input type="checkbox" id="check" onclick="logoOptions()">
+	<label id="iconeMenu" for="check"><img src="icone.png"></label>
+	
+	<div class="barra">
+		<nav>
+				<a ><div class="link" id="menu-1" onclick="moveElement()">Configurações</div></a>
+				<a ><div class="link" id="menu-2">Mapa</div></a>
+				<a ><div class="link" id="menu-3" >Frota Ativa</div></a>
+				<a ><div class="link" id="menu-4" >Informações Ambientais</div></a>
+				<a ><div class="link" id="menu-5" >Feedback</div></a>
+				<a ><div class="link" id="menu-6">Sobre</div></a>
+		</nav>
+	</div>
+  <div id="map"></div>
+<script type="text/javascript" src="js/map/setMap.js"></script>
+    <script type="text/javascript" src="js/map/setStops.js"></script>
+    <script type="text/javascript" src="js/map/manager.js"></script>
+	<script type="text/javascript" src="js/map/setBus.js"></script>
+	
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3PYkutQnw0_SdtKKYhUTb1jmviqWQ_Vo&libraries=places&callback=initMap" async defer></script>
+    <div id="map-canvas" />
+    <script type="text/javascript" src="js/mqtt/clientMqtt.js"></script>
+
+</body>
+
 </html>
